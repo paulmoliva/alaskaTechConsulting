@@ -1,3 +1,8 @@
 .paul {
   width: 368px;
 }
+
+.navbar-default {
+    background-color: rgba(22,22,22,0.5);
+    border-color: transparent;
+}

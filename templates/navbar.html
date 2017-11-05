@@ -31,3 +31,22 @@
     </div>
     <!-- /.container -->
 </nav>
+
+<script>
+    (function() {
+      var header = $(".navbar-default");
+      $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 5) {
+          header.css({
+            backgroundColor:'rgba(22,22,22,1',
+          });
+        } else {
+          header.css({
+            backgroundColor:'rgba(22,22,22,0.5',
+          });
+        }
+      });
+    })();
+</script>
