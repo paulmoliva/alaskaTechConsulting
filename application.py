@@ -22,6 +22,11 @@ def contact():
     return flask.render_template('contact.html')
 
 
+@application.route('/portfolio')
+def portfolio():
+    return flask.render_template('portfolio.html')
+
+
 @application.route('/form-submit', methods=['POST'])
 def form_submit():
     form_json_data = flask.request.json

@@ -1,0 +1,60 @@
+<section id="contact">
+    <div class="section-content">
+      <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
+      <h3>Use the form or contact us by phone at 907-607-6916</h3>
+    </div>
+    <div class="contact-section">
+    <div class="container" id="contact-container">
+      <form id="contact-form">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-group">
+              <label for="exampleInputUsername">Your name</label>
+              <input type="text" class="form-control" id="name-input">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail">Email</label>
+              <input type="email" class="form-control" id="email-input">
+            </div>	
+            <div class="form-group">
+              <label for="telephone">Phone</label>
+              <input type="tel" class="form-control" id="phone-input">
+            </div>
+            <div class="form-group">
+              <label for ="description"> Message</label>
+              <textarea  class="form-control" id="message-input" placeholder="Enter Your Message"></textarea>
+            </div>
+            <div>
+              <button type="button" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+            </div>
+          </div>
+      </form>
+    </div>
+  </section>
+  
+  <script>
+    $('.submit').on('click', e => {
+      e.preventDefault();
+      $(e.target).prop("disabled", true);
+      const name = $('#name-input').val();
+      const email = $('#email-input').val();
+      const phone = $('#phone-input').val();
+      const message = $('#message-input').val();
+      $.ajax({
+        url:'/form-submit',
+        method: 'POST',
+        data: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          message: message
+        }),
+        contentType: 'application/json',
+        success: () => {
+          const formElement = $('#contact-form')
+          formElement.animate({height: 0}, 500);
+          setTimeout( () => formElement.remove(), 450);
+          $('#contact-container').append(`<h3 style="text-align: center;">Thanks! We will be in touch soon.</h3>`)
+        }
+      })
+    })
+  </script>
